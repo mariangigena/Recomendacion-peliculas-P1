@@ -116,4 +116,3 @@ def recomendacion(titulo):
     top_movies = df_indices.iloc[movie_indices]['title'].tolist()  # Convertir los títulos en una lista de Python
     return top_movies
 
-recomendacion("TOY STORY")
