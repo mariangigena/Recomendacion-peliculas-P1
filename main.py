@@ -108,11 +108,11 @@ def recomendacion(titulo):
     df_processed = preprocess_data(df)
     df_indices, indices, cosine_sim = compute_cosine_similarity(df_processed)
     titulo= titulo.lower()
-    idx = indices[titulo]
+    indices_lower = {k.lower(): v for k, v in indices.items()}
+    idx = indices_lower[titulo]
     sim_scores = list(enumerate(cosine_sim[idx]))
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
     sim_scores = sim_scores[1:6]  # Obtener los 5 puntajes de similitud más altos
     movie_indices = [i[0] for i in sim_scores]
     top_movies = df_indices.iloc[movie_indices]['title'].tolist()  # Convertir los títulos en una lista de Python
     return top_movies
-

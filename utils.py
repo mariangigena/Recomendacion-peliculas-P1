@@ -12,7 +12,8 @@ C= None
 
 def load_data():
     df = pd.read_csv('movies.csv')
-    df = df[['title', 'vote_average','overview','vote_count','popularity']]
+    df = df[['title', 'vote_average', 'overview', 'vote_count', 'popularity']]
+    df['title'] = df['title'].astype(str)  # Convertir el título a tipo string
     df.to_csv('moviesml.csv', index=False)
     return pd.read_csv('moviesml.csv')
 
@@ -64,3 +65,5 @@ qualified = preprocess_data(df)
 df_indices, indices, cosine_sim = compute_cosine_similarity(qualified)
 top_movies= recomendacion('Toy Story',df_indices,indices, cosine_sim )
 print (top_movies)
+
+
