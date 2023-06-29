@@ -50,7 +50,7 @@ def votos_titulo(titulo):
 @app.get('/get_actor/{nombre_actor}')
 def get_actor(nombre_actor):
     data_cred = pd.read_csv('data/new_cred.csv')
-    data_nuevo = pd.read_csv('data/new_cred.csv')
+    data_nuevo = pd.read_csv('data/new_movies.csv')
 
     actor_movies = data_cred[data_cred['actors'].str.contains(nombre_actor, case=False)]
 
@@ -68,7 +68,7 @@ def get_actor(nombre_actor):
 @app.get('/get_director/{nombre_director}')
 def get_director(nombre_director):
     data_cred = pd.read_csv('data/new_cred.csv')
-    data_movie = pd.read_csv('data/new_cred.csv')
+    data_movie = pd.read_csv('data/new_movies.csv')
 
     director_movies = data_cred[data_cred['director_names'] == nombre_director]
 
