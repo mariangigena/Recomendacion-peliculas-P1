@@ -1,7 +1,8 @@
 # Recomendación de Películas
 Proyecto 1: Machine Learning Operations (MLOps)
 
-<img src="C:\Users\maria\OneDrive\Escritorio\PI1\Peliculas.jpg" alt="Peliculas">
+![Peliculas](images/peli.PNG)
+
 
 
 
