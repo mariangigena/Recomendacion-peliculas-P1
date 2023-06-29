@@ -15,27 +15,27 @@ class Pelicula(BaseModel):
 
 @app.get('/cantidad_filmaciones_dia/{dia}')
 def cantidad_filmaciones_dia(dia):
-    data = pd.read_csv('nuevo_data.csv')
+    data = pd.read_csv('data\nuevo_data.csv')
     dia_consultado = dia.capitalize()
     filmaciones_dia = data[data['nombre_dia'] == dia_consultado]
     return f"La cantidad de peliculas estrenadas en el dia {dia_consultado} es: {len(filmaciones_dia)}"
 
 @app.get('/cantidad_filmaciones_mes/{mes}')
 def cantidad_filmaciones_mes(mes):
-    data = pd.read_csv('nuevo_data.csv')
+    data = pd.read_csv('data\nuevo_data.csv.csv')
     mes_consultado = mes.lower()
     filmaciones_mes = data[data['nombre_mes'] == mes_consultado]
     return f"La cantidad de peliculas estrenadas en el mes de {mes_consultado} es: {len(filmaciones_mes)}"
 
 @app.get('/score_titulo/{titulo}')
 def score_titulo(titulo):
-    data = pd.read_csv('nuevo_data.csv')
+    data = pd.read_csv('data\nuevo_data.csv.csv')
     movie = data[data['title'] == titulo]
     return f"La película {movie['title'].values[0]} fue estrenada en el año {movie['release_year'].values[0]} con una puntuación/popularidad de {movie['popularity'].values[0]}"
 
 @app.get('/votos_titulo/{titulo}')
 def votos_titulo(titulo):
-    data = pd.read_csv('nuevo_data.csv')
+    data = pd.read_csv('data\nuevo_data.csv.csv')
     movie = data[data['title'].str.lower() == titulo.lower()]
 
     if movie.empty:
@@ -49,8 +49,8 @@ def votos_titulo(titulo):
 
 @app.get('/get_actor/{nombre_actor}')
 def get_actor(nombre_actor):
-    data_cred = pd.read_csv('new_cred.csv')
-    data_nuevo = pd.read_csv('new_movies.csv')
+    data_cred = pd.read_csv('data\new_cred.csv')
+    data_nuevo = pd.read_csv('data\new_movies.csv.csv')
 
     actor_movies = data_cred[data_cred['actors'].str.contains(nombre_actor, case=False)]
 
@@ -67,8 +67,8 @@ def get_actor(nombre_actor):
 
 @app.get('/get_director/{nombre_director}')
 def get_director(nombre_director):
-    data_cred = pd.read_csv('new_cred.csv')
-    data_movie = pd.read_csv('new_movies.csv')
+    data_cred = pd.read_csv('data\new_cred.csv.csv')
+    data_movie = pd.read_csv('data\new_movies.csv')
 
     director_movies = data_cred[data_cred['director_names'] == nombre_director]
 
