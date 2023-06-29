@@ -1,12 +1,11 @@
-# utils.py
+# Se crea este archivo para luego ser importado a main.py los valores del modelo que sirven a la funcion de recomendacion 
 
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
-'''# Variables globales
-indices = None
-cosine_sim = None'''
+# Variables globales
+
 m = None
 C= None
 
@@ -41,7 +40,7 @@ def preprocess_data(df):
     return qualified
 
 def compute_cosine_similarity(df):
-    ''''global indices, cosine_sim'''
+    ###global indices, cosine_sim
     tf = TfidfVectorizer(analyzer='word',ngram_range=(1, 2),min_df=0, stop_words='english')
     tfidf_matrix = tf.fit_transform(df['overview'].fillna(''))
     cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
